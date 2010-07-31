@@ -70,6 +70,17 @@ Pull out the string value of the context object with `toString()` when you need 
     context.end();
     context.toString(); // '<div></div>'
     
+littleBuilder comes with all the HTML5 tags. If I forgot a tag (or you want something extra), add one with `addTag(tagName isSelfClosing)`
+
+  littleBuilder.addTag('blink', false); // add <blink>, which is not a self-closing tag
+  littleBuilder.addTag('fb:name', true) // add the Facebook markup language tag fb:name, which closes itself.
+  
+  // Now we can do
+  html = littleBuilder.build();
+  littleBuilder.blink().text('blink blink blink).end()
+  
+  fbml = littleBuilder.build()['fb:name']({uid: '12345678', firstnameonly: 'true'})
+    
 ## License 
 
 (The MIT License)
