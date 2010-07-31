@@ -69,6 +69,7 @@ Pull out the string value of the context object with `toString()` when you need 
     context.div();
     context.end();
     context.toString(); // '<div></div>'
+    
 ## License 
 
 (The MIT License)
