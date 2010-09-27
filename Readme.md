@@ -5,7 +5,7 @@ littleBuilder is an HTML building library for javascript intended for use inside
 
 # How it works
 Create a building context with the `.build()` function.  This object has one method for every HTML5 tag.
-Each method can take 0, 1 or 2 arguments. With no arguments it builds an empty open tag for the HTML element. With one argument you can supply an object literal that will become the attributes of the tag, key for key, value for value. With three arguments, you get an element with attributes and inner content set.
+Each method can take 0, 1 or 2 arguments. With no arguments it builds an empty HTML, attribute-less element. With one argument you can supply an object literal that will become the attributes of the tag, key for key, value for value. With three arguments, you get an element with attributes and inner content set.
   
     var context = littleBuilder.build() // create an HTML building context
     context.div() // toDOM() is <div></div>
@@ -28,7 +28,7 @@ You can also add content with the `.text()` function. It takes a string and adds
     // <p>Is this person awesome:Yes and that is the truth</p>
     
 
-You can add non-string content that responds to `toString()` to the context with the `append(ojb)` function:
+You can add non-string content that responds to `toString()` to the context with the `append(obj)` function:
 
     var person = new Person('Trek', 29)
     person.toString(); // would be 'Trek is 29'
@@ -46,7 +46,7 @@ Close tags with with `.end()` function:
 
 All together now, with whitespace for style:
     
-    var context = littleBuilder.build()
+    var context = littleBuilder.build();
     context
       .div()
         .p()
@@ -68,7 +68,7 @@ Pull out the string value of the context object with `toString()` when you need 
     context = littleBuilder.build();
     context.div();
     context.end();
-    context.toDOM(); // <div></div>
+    context.toString(); // "<div></div>"
     
 littleBuilder comes with all the HTML5 tags. If I forgot a tag (or you want something extra), add one with `addTag(tagName isSelfClosing)`
 
