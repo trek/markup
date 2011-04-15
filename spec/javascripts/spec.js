@@ -31,7 +31,15 @@ describe('markup', function(){
      });
      
      it('works with ({id: "foo", "class":"a cool awesome"})', function(){
-       expect(builder.div({id: "foo", "class":"a cool awesome"}).end().toString()).toEqual('<div id="foo" class="a cool awesome"></div>')
+       var html = builder.div({id: "foo", "class":"a cool awesome"}).end().toString()
+       var tagMatcher = /^<div.*><\/div>$/
+       var idMatcher  = /^<div.*id="foo".*><\/div>$/
+       var classMatcher = /^<div.*class="a cool awesome".*><\/div>$/
+       
+       // some browsers stringify attributes in different orders
+       expect(html).toMatch(tagMatcher);
+       expect(html).toMatch(idMatcher);
+       expect(html).toMatch(classMatcher);
      });
    });
    
