@@ -1,491 +1,488 @@
-describe 'littleBuilder'
-  describe '.build()'
-    it 'returns a new builder context'
-      littleBuilder.build().should.be_an_instance_of(littleBuilder.Context)
-    end
+describe('littleBuilder', function(){
+  describe('.build()', function(){
+    it('returns a new builder context', function(){
+      // littleBuilder.build().should.be_an_instance_of(littleBuilder.Context)
+    });
     
-    it 'can be chained'
-      littleBuilder.build().div().end().toString().should.equal('<div></div>')
-    end
+    it('can be chained', function(){
+      expect(littleBuilder.build().div().end().toString()).toEqual('<div></div>')
+    });
     
-    it 'can be used unchained'
+    it('can be used unchained', function(){
       built = littleBuilder.build()
       built.div()
       built.end()
-      built.toString().should.equal('<div></div>')
-    end
+      expect(built.toString()).toEqual('<div></div>');
+    });
     
-    describe 'tags'
-      before_each
+    describe('tags', function(){
+      beforeEach(function() {
         builder = littleBuilder.build()
-      end
+      });
       
-      it 'writes text nodes'
+      it('writes text nodes', function(){
         built = builder.div().div().text('hello world').end().end()
-        built.toString().should.eql('<div><div>hello world</div></div>')
-      end
-    end
-  end
+        expect(built.toString()).toEqual('<div><div>hello world</div></div>');
+      });
+    });
+  });
   
-  describe 'setting attributes'
-     before_each
+  describe('setting attributes', function(){
+     beforeEach(function() {
        builder = littleBuilder.build()
-     end
+     });
      
-     it 'works with ({id: "foo", "class":"a cool awesome"})'
-       builder.div({id: "foo", "class":"a cool awesome"}).end().toString().should.eql('<div id="foo"  class="a cool awesome"></div>')
-     end
-   end
+     it('works with ({id: "foo", "class":"a cool awesome"})', function(){
+       expect(builder.div({id: "foo", "class":"a cool awesome"}).end().toString()).toEqual('<div id="foo" class="a cool awesome"></div>')
+     });
+   });
    
-   describe 'setting text immediately'
-     before_each
+   describe('setting text immediately', function(){
+     beforeEach(function() {
        builder = littleBuilder.build()
-     end
+     });
      
-     it 'works with ({}, "some text")'
-       builder.div({}, 'some text').end().toString().should.equal('<div>some text</div>')
-     end
-   end
+     it('works with ({}, "some text")', function(){
+       expect(builder.div({}, 'some text').end().toString()).toEqual('<div>some text</div>')
+     });
+   });
    
-   describe 'tags'
-     before_each
+   describe('tags', function(){
+     beforeEach(function() {
        builder = littleBuilder.build()
-     end
+     });
      
-     it 'builds a <a> tag'
-       builder.a().end().toString().should.equal('<a></a>')
-     end
+     it('builds a <a> tag', function(){
+       expect(builder.a().end().toString()).toEqual('<a></a>')
+     });
    
-     it 'builds a <abbr> tag'
-       builder.abbr().end().toString().should.equal('<abbr></abbr>')
-     end
+     it('builds a <abbr> tag', function(){
+       expect(builder.abbr().end().toString()).toEqual('<abbr></abbr>')
+     });
    
-     it 'builds a <address> tag'
-       builder.address().end().toString().should.equal('<address></address>')
-     end
+     it('builds a <address> tag', function(){
+       expect(builder.address().end().toString()).toEqual('<address></address>')
+     });
    
-     it 'builds a <article> tag'
-       builder.article().end().toString().should.equal('<article></article>')
-     end
+     it('builds a <article> tag', function(){
+       expect(builder.article().end().toString()).toEqual('<article></article>')
+     });
    
-     it 'builds a <aside> tag'
-       builder.aside().end().toString().should.equal('<aside></aside>')
-     end
+     it('builds a <aside> tag', function(){
+       expect(builder.aside().end().toString()).toEqual('<aside></aside>')
+     });
    
-     it 'builds a <audio> tag'
-       builder.audio().end().toString().should.equal('<audio></audio>')
-     end
+     it('builds a <audio> tag', function(){
+       expect(builder.audio().end().toString()).toEqual('<audio></audio>')
+     });
    
-     it 'builds a <b> tag'
-       builder.b().end().toString().should.equal('<b></b>')
-     end
+     it('builds a <b> tag', function(){
+       expect(builder.b().end().toString()).toEqual('<b></b>')
+     });
    
-     it 'builds a <bdo> tag'
-       builder.bdo().end().toString().should.equal('<bdo></bdo>')
-     end
+     it('builds a <bdo> tag', function(){
+       expect(builder.bdo().end().toString()).toEqual('<bdo></bdo>')
+     });
    
-     it 'builds a <blockquote> tag'
-       builder.blockquote().end().toString().should.equal('<blockquote></blockquote>')
-     end
+     it('builds a <blockquote> tag', function(){
+       expect(builder.blockquote().end().toString()).toEqual('<blockquote></blockquote>')
+     });
    
-     it 'builds a <body> tag'
-       builder.body().end().toString().should.equal('<body></body>')
-     end
+     it('builds a <body> tag', function(){
+       expect(builder.body().end().toString()).toEqual('<body></body>')
+     });
    
-     it 'builds a <button> tag'
-       builder.button().end().toString().should.equal('<button></button>')
-     end
+     it('builds a <button> tag', function(){
+       expect(builder.button().end().toString()).toEqual('<button></button>')
+     });
    
-     it 'builds a <canvas> tag'
-       builder.canvas().end().toString().should.equal('<canvas></canvas>')
-     end
+     it('builds a <canvas> tag', function(){
+       expect(builder.canvas().end().toString()).toEqual('<canvas></canvas>')
+     });
    
-     it 'builds a <caption> tag'
-       builder.caption().end().toString().should.equal('<caption></caption>')
-     end
+     it('builds a <caption> tag', function(){
+       expect(builder.caption().end().toString()).toEqual('<caption></caption>')
+     });
    
-     it 'builds a <cite> tag'
-       builder.cite().end().toString().should.equal('<cite></cite>')
-     end
+     it('builds a <cite> tag', function(){
+       expect(builder.cite().end().toString()).toEqual('<cite></cite>')
+     });
    
-     it 'builds a <code> tag'
-       builder.code().end().toString().should.equal('<code></code>')
-     end
+     it('builds a <code> tag', function(){
+       expect(builder.code().end().toString()).toEqual('<code></code>')
+     });
    
-     it 'builds a <colgroup> tag'
-       builder.colgroup().end().toString().should.equal('<colgroup></colgroup>')
-     end
+     it('builds a <colgroup> tag', function(){
+       expect(builder.colgroup().end().toString()).toEqual('<colgroup></colgroup>')
+     });
    
-     it 'builds a <command> tag'
-       builder.command().end().toString().should.equal('<command></command>')
-     end
+     it('builds a <command> tag', function(){
+       expect(builder.command().end().toString()).toEqual('<command></command>')
+     });
    
-     it 'builds a <datalist> tag'
-       builder.datalist().end().toString().should.equal('<datalist></datalist>')
-     end
+     it('builds a <datalist> tag', function(){
+       expect(builder.datalist().end().toString()).toEqual('<datalist></datalist>')
+     });
    
-     it 'builds a <dd> tag'
-       builder.dd().end().toString().should.equal('<dd></dd>')
-     end
+     it('builds a <dd> tag', function(){
+       expect(builder.dd().end().toString()).toEqual('<dd></dd>')
+     });
    
-     it 'builds a <del> tag'
-       builder.del().end().toString().should.equal('<del></del>')
-     end
+     it('builds a <del> tag', function(){
+       expect(builder.del().end().toString()).toEqual('<del></del>')
+     });
    
-     it 'builds a <details> tag'
-       builder.details().end().toString().should.equal('<details></details>')
-     end
+     it('builds a <details> tag', function(){
+       expect(builder.details().end().toString()).toEqual('<details></details>')
+     });
    
-     it 'builds a <dfn> tag'
-       builder.dfn().end().toString().should.equal('<dfn></dfn>')
-     end
+     it('builds a <dfn> tag', function(){
+       expect(builder.dfn().end().toString()).toEqual('<dfn></dfn>')
+     });
    
-     it 'builds a <div> tag'
-       builder.div().end().toString().should.equal('<div></div>')
-     end
+     it('builds a <div> tag', function(){
+       expect(builder.div().end().toString()).toEqual('<div></div>')
+     });
    
-     it 'builds a <dl> tag'
-       builder.dl().end().toString().should.equal('<dl></dl>')
-     end
+     it('builds a <dl> tag', function(){
+       expect(builder.dl().end().toString()).toEqual('<dl></dl>')
+     });
    
-     it 'builds a <dt> tag'
-       builder.dt().end().toString().should.equal('<dt></dt>')
-     end
+     it('builds a <dt> tag', function(){
+       expect(builder.dt().end().toString()).toEqual('<dt></dt>')
+     });
    
-     it 'builds a <em> tag'
-       builder.em().end().toString().should.equal('<em></em>')
-     end
+     it('builds a <em> tag', function(){
+       expect(builder.em().end().toString()).toEqual('<em></em>')
+     });
    
-     it 'builds a <fieldset> tag'
-       builder.fieldset().end().toString().should.equal('<fieldset></fieldset>')
-     end
+     it('builds a <fieldset> tag', function(){
+       expect(builder.fieldset().end().toString()).toEqual('<fieldset></fieldset>')
+     });
    
-     it 'builds a <figcaption> tag'
-       builder.figcaption().end().toString().should.equal('<figcaption></figcaption>')
-     end
+     it('builds a <figcaption> tag', function(){
+       expect(builder.figcaption().end().toString()).toEqual('<figcaption></figcaption>')
+     });
    
-     it 'builds a <figure> tag'
-       builder.figure().end().toString().should.equal('<figure></figure>')
-     end
+     it('builds a <figure> tag', function(){
+       expect(builder.figure().end().toString()).toEqual('<figure></figure>')
+     });
    
-     it 'builds a <footer> tag'
-       builder.footer().end().toString().should.equal('<footer></footer>')
-     end
+     it('builds a <footer> tag', function(){
+       expect(builder.footer().end().toString()).toEqual('<footer></footer>')
+     });
    
-     it 'builds a <form> tag'
-       builder.form().end().toString().should.equal('<form></form>')
-     end
+     it('builds a <form> tag', function(){
+       expect(builder.form().end().toString()).toEqual('<form></form>')
+     });
    
-     it 'builds a <h1> tag'
-       builder.h1().end().toString().should.equal('<h1></h1>')
-     end
+     it('builds a <h1> tag', function(){
+       expect(builder.h1().end().toString()).toEqual('<h1></h1>')
+     });
    
-     it 'builds a <h2> tag'
-       builder.h2().end().toString().should.equal('<h2></h2>')
-     end
+     it('builds a <h2> tag', function(){
+       expect(builder.h2().end().toString()).toEqual('<h2></h2>')
+     });
    
-     it 'builds a <h3> tag'
-       builder.h3().end().toString().should.equal('<h3></h3>')
-     end
+     it('builds a <h3> tag', function(){
+       expect(builder.h3().end().toString()).toEqual('<h3></h3>')
+     });
    
-     it 'builds a <h4> tag'
-       builder.h4().end().toString().should.equal('<h4></h4>')
-     end
+     it('builds a <h4> tag', function(){
+       expect(builder.h4().end().toString()).toEqual('<h4></h4>')
+     });
    
-     it 'builds a <h5> tag'
-       builder.h5().end().toString().should.equal('<h5></h5>')
-     end
+     it('builds a <h5> tag', function(){
+       expect(builder.h5().end().toString()).toEqual('<h5></h5>')
+     });
    
-     it 'builds a <h6> tag'
-       builder.h6().end().toString().should.equal('<h6></h6>')
-     end
+     it('builds a <h6> tag', function(){
+       expect(builder.h6().end().toString()).toEqual('<h6></h6>')
+     });
    
-     it 'builds a <head> tag'
-       builder.head().end().toString().should.equal('<head></head>')
-     end
+     it('builds a <head> tag', function(){
+       expect(builder.head().end().toString()).toEqual('<head></head>')
+     });
    
-     it 'builds a <header> tag'
-       builder.header().end().toString().should.equal('<header></header>')
-     end
+     it('builds a <header> tag', function(){
+       expect(builder.header().end().toString()).toEqual('<header></header>')
+     });
    
-     it 'builds a <hgroup> tag'
-       builder.hgroup().end().toString().should.equal('<hgroup></hgroup>')
-     end
+     it('builds a <hgroup> tag', function(){
+       expect(builder.hgroup().end().toString()).toEqual('<hgroup></hgroup>')
+     });
    
-     it 'builds a <html> tag'
-       builder.html().end().toString().should.equal('<html></html>')
-     end
+     it('builds a <html> tag', function(){
+       expect(builder.html().end().toString()).toEqual('<html></html>')
+     });
    
-     it 'builds a <i> tag'
-       builder.i().end().toString().should.equal('<i></i>')
-     end
+     it('builds a <i> tag', function(){
+       expect(builder.i().end().toString()).toEqual('<i></i>')
+     });
    
-     it 'builds a <iframe> tag'
-       builder.iframe().end().toString().should.equal('<iframe></iframe>')
-     end
+     it('builds a <iframe> tag', function(){
+       expect(builder.iframe().end().toString()).toEqual('<iframe></iframe>')
+     });
    
-     it 'builds a <ins> tag'
+     it('builds a <ins> tag', function(){
      console.log('<ins>')
-       builder.ins().end().toString().should.equal('<ins></ins>')
-     end
+       expect(builder.ins().end().toString()).toEqual('<ins></ins>')
+     });
    
-     // it 'builds a <keygen> tag'
-     //   builder.keygen().toString().should.equal('<keygen>')
-     // end
+     it('builds a <kbd> tag', function(){
+       expect(builder.kbd().end().toString()).toEqual('<kbd></kbd>')
+     });
    
-     it 'builds a <kbd> tag'
-       builder.kbd().end().toString().should.equal('<kbd></kbd>')
-     end
+     it('builds a <label> tag', function(){
+       expect(builder.label().end().toString()).toEqual('<label></label>')
+     });
    
-     it 'builds a <label> tag'
-       builder.label().end().toString().should.equal('<label></label>')
-     end
+     it('builds a <legend> tag', function(){
+       expect(builder.legend().end().toString()).toEqual('<legend></legend>')
+     });
    
-     it 'builds a <legend> tag'
-       builder.legend().end().toString().should.equal('<legend></legend>')
-     end
+     it('builds a <li> tag', function(){
+       expect(builder.li().end().toString()).toEqual('<li></li>')
+     });
    
-     it 'builds a <li> tag'
-       builder.li().end().toString().should.equal('<li></li>')
-     end
+     it('builds a <map> tag', function(){
+       expect(builder.map().end().toString()).toEqual('<map></map>')
+     });
    
-     it 'builds a <map> tag'
-       builder.map().end().toString().should.equal('<map></map>')
-     end
+     it('builds a <mark> tag', function(){
+       expect(builder.mark().end().toString()).toEqual('<mark></mark>')
+     });
    
-     it 'builds a <mark> tag'
-       builder.mark().end().toString().should.equal('<mark></mark>')
-     end
+     it('builds a <menu> tag', function(){
+       expect(builder.menu().end().toString()).toEqual('<menu></menu>')
+     });
    
-     it 'builds a <menu> tag'
-       builder.menu().end().toString().should.equal('<menu></menu>')
-     end
+     it('builds a <meter> tag', function(){
+       expect(builder.meter().end().toString()).toEqual('<meter></meter>')
+     });
    
-     it 'builds a <meter> tag'
-       builder.meter().end().toString().should.equal('<meter></meter>')
-     end
+     it('builds a <nav> tag', function(){
+       expect(builder.nav().end().toString()).toEqual('<nav></nav>')
+     });
    
-     it 'builds a <nav> tag'
-       builder.nav().end().toString().should.equal('<nav></nav>')
-     end
+     it('builds a <noscript> tag', function(){
+       expect(builder.noscript().end().toString()).toEqual('<noscript></noscript>')
+     });
    
-     it 'builds a <noscript> tag'
-       builder.noscript().end().toString().should.equal('<noscript></noscript>')
-     end
+     it('builds a <object> tag', function(){
+       expect(builder.object().end().toString()).toEqual('<object></object>')
+     });
    
-     it 'builds a <object> tag'
-       builder.object().end().toString().should.equal('<object></object>')
-     end
+     it('builds a <ol> tag', function(){
+       expect(builder.ol().end().toString()).toEqual('<ol></ol>')
+     });
    
-     it 'builds a <ol> tag'
-       builder.ol().end().toString().should.equal('<ol></ol>')
-     end
+     it('builds a <optgroup> tag', function(){
+       expect(builder.optgroup().end().toString()).toEqual('<optgroup></optgroup>')
+     });
    
-     it 'builds a <optgroup> tag'
-       builder.optgroup().end().toString().should.equal('<optgroup></optgroup>')
-     end
+     it('builds a <option> tag', function(){
+       expect(builder.option().end().toString()).toEqual('<option></option>')
+     });
    
-     it 'builds a <option> tag'
-       builder.option().end().toString().should.equal('<option></option>')
-     end
+     it('builds a <output> tag', function(){
+       expect(builder.output().end().toString()).toEqual('<output></output>')
+     });
    
-     it 'builds a <output> tag'
-       builder.output().end().toString().should.equal('<output></output>')
-     end
+     it('builds a <p> tag', function(){
+       expect(builder.p().end().toString()).toEqual('<p></p>')
+     });
    
-     it 'builds a <p> tag'
-       builder.p().end().toString().should.equal('<p></p>')
-     end
+     it('builds a <pre> tag', function(){
+       expect(builder.pre().end().toString()).toEqual('<pre></pre>')
+     });
    
-     it 'builds a <pre> tag'
-       builder.pre().end().toString().should.equal('<pre></pre>')
-     end
+     it('builds a <progress> tag', function(){
+       expect(builder.progress().end().toString()).toEqual('<progress></progress>')
+     });
    
-     it 'builds a <progress> tag'
-       builder.progress().end().toString().should.equal('<progress></progress>')
-     end
+     it('builds a <q> tag', function(){
+       expect(builder.q().end().toString()).toEqual('<q></q>')
+     });
    
-     it 'builds a <q> tag'
-       builder.q().end().toString().should.equal('<q></q>')
-     end
+     it('builds a <rp> tag', function(){
+       expect(builder.rp().end().toString()).toEqual('<rp></rp>')
+     });
    
-     it 'builds a <rp> tag'
-       builder.rp().end().toString().should.equal('<rp></rp>')
-     end
+     it('builds a <rt> tag', function(){
+       expect(builder.rt().end().toString()).toEqual('<rt></rt>')
+     });
    
-     it 'builds a <rt> tag'
-       builder.rt().end().toString().should.equal('<rt></rt>')
-     end
+     it('builds a <ruby> tag', function(){
+       expect(builder.ruby().end().toString()).toEqual('<ruby></ruby>')
+     });
    
-     it 'builds a <ruby> tag'
-       builder.ruby().end().toString().should.equal('<ruby></ruby>')
-     end
+     it('builds a <samp> tag', function(){
+       expect(builder.samp().end().toString()).toEqual('<samp></samp>')
+     });
    
-     it 'builds a <samp> tag'
-       builder.samp().end().toString().should.equal('<samp></samp>')
-     end
+     it('builds a <script> tag', function(){
+       expect(builder.script().end().toString()).toEqual('<script></script>')
+     });
    
-     it 'builds a <script> tag'
-       builder.script().end().toString().should.equal('<script></script>')
-     end
+     it('builds a <section> tag', function(){
+       expect(builder.section().end().toString()).toEqual('<section></section>')
+     });
    
-     it 'builds a <section> tag'
-       builder.section().end().toString().should.equal('<section></section>')
-     end
+     it('builds a <select> tag', function(){
+       expect(builder.select().end().toString()).toEqual('<select></select>')
+     });
    
-     it 'builds a <select> tag'
-       builder.select().end().toString().should.equal('<select></select>')
-     end
+     it('builds a <small> tag', function(){
+       expect(builder.small().end().toString()).toEqual('<small></small>')
+     });
    
-     it 'builds a <small> tag'
-       builder.small().end().toString().should.equal('<small></small>')
-     end
+     it('builds a <span> tag', function(){
+       expect(builder.span().end().toString()).toEqual('<span></span>')
+     });
    
-     it 'builds a <span> tag'
-       builder.span().end().toString().should.equal('<span></span>')
-     end
+     it('builds a <strike> tag', function(){
+       expect(builder.strike().end().toString()).toEqual('<strike></strike>')
+     });
    
-     it 'builds a <strike> tag'
-       builder.strike().end().toString().should.equal('<strike></strike>')
-     end
+     it('builds a <strong> tag', function(){
+       expect(builder.strong().end().toString()).toEqual('<strong></strong>')
+     });
    
-     it 'builds a <strong> tag'
-       builder.strong().end().toString().should.equal('<strong></strong>')
-     end
+     it('builds a <style> tag', function(){
+       expect(builder.style().end().toString()).toEqual('<style></style>')
+     });
    
-     it 'builds a <style> tag'
-       builder.style().end().toString().should.equal('<style></style>')
-     end
+     it('builds a <sub> tag', function(){
+       expect(builder.sub().end().toString()).toEqual('<sub></sub>')
+     });
    
-     it 'builds a <sub> tag'
-       builder.sub().end().toString().should.equal('<sub></sub>')
-     end
+     it('builds a <summary> tag', function(){
+       expect(builder.summary().end().toString()).toEqual('<summary></summary>')
+     });
    
-     it 'builds a <summary> tag'
-       builder.summary().end().toString().should.equal('<summary></summary>')
-     end
+     it('builds a <sup> tag', function(){
+       expect(builder.sup().end().toString()).toEqual('<sup></sup>')
+     });
    
-     it 'builds a <sup> tag'
-       builder.sup().end().toString().should.equal('<sup></sup>')
-     end
+     it('builds a <table> tag', function(){
+       expect(builder.table().end().toString()).toEqual('<table></table>')
+     });
    
-     it 'builds a <table> tag'
-       builder.table().end().toString().should.equal('<table></table>')
-     end
+     it('builds a <tbody> tag', function(){
+       expect(builder.tbody().end().toString()).toEqual('<tbody></tbody>')
+     });
    
-     it 'builds a <tbody> tag'
-       builder.tbody().end().toString().should.equal('<tbody></tbody>')
-     end
+     it('builds a <td> tag', function(){
+       expect(builder.td().end().toString()).toEqual('<td></td>')
+     });
    
-     it 'builds a <td> tag'
-       builder.td().end().toString().should.equal('<td></td>')
-     end
+     it('builds a <textarea> tag', function(){
+       expect(builder.textarea().end().toString()).toEqual('<textarea></textarea>')
+     });
    
-     it 'builds a <textarea> tag'
-       builder.textarea().end().toString().should.equal('<textarea></textarea>')
-     end
+     it('builds a <tfoot> tag', function(){
+       expect(builder.tfoot().end().toString()).toEqual('<tfoot></tfoot>')
+     });
    
-     it 'builds a <tfoot> tag'
-       builder.tfoot().end().toString().should.equal('<tfoot></tfoot>')
-     end
+     it('builds a <th> tag', function(){
+       expect(builder.th().end().toString()).toEqual('<th></th>')
+     });
    
-     it 'builds a <th> tag'
-       builder.th().end().toString().should.equal('<th></th>')
-     end
+     it('builds a <thead> tag', function(){
+       expect(builder.thead().end().toString()).toEqual('<thead></thead>')
+     });
    
-     it 'builds a <thead> tag'
-       builder.thead().end().toString().should.equal('<thead></thead>')
-     end
+     it('builds a <time> tag', function(){
+       expect(builder.time().end().toString()).toEqual('<time></time>')
+     });
    
-     it 'builds a <time> tag'
-       builder.time().end().toString().should.equal('<time></time>')
-     end
+     it('builds a <title> tag', function(){
+       expect(builder.title().end().toString()).toEqual('<title></title>')
+     });
    
-     it 'builds a <title> tag'
-       builder.title().end().toString().should.equal('<title></title>')
-     end
+     it('builds a <tr> tag', function(){
+       expect(builder.tr().end().toString()).toEqual('<tr></tr>')
+     });
    
-     it 'builds a <tr> tag'
-       builder.tr().end().toString().should.equal('<tr></tr>')
-     end
+     it('builds a <ul> tag', function(){
+       expect(builder.ul().end().toString()).toEqual('<ul></ul>')
+     });
    
-     it 'builds a <ul> tag'
-       builder.ul().end().toString().should.equal('<ul></ul>')
-     end
+     it('builds a <var> tag', function(){
+       expect(builder['var']().end().toString()).toEqual('<var></var>')
+     });
    
-     it 'builds a <var> tag'
-       builder['var']().end().toString().should.equal('<var></var>')
-     end
+     it('builds a <video> tag', function(){
+       expect(builder.video().end().toString()).toEqual('<video></video>')
+     });
+   });
    
-     it 'builds a <video> tag'
-       builder.video().end().toString().should.equal('<video></video>')
-     end
-   end
-   
-   describe 'closing tags'
-     before_each
+   describe('closing tags', function(){
+     beforeEach(function() {
        builder = littleBuilder.build()
-     end
+     });
      
-     it 'closes tags with end'      
-       builder.div().end().toString().should.equal('<div></div>')
-     end
+     it('closes tags with end', function(){      
+       expect(builder.div().end().toString()).toEqual('<div></div>')
+     });
      
-   end
+   });
    
-   describe 'nesting tags'
-     it 'correctly display'
-       littleBuilder.build().p().a().end().span().end().end().div().end().toString().should.equal('<p><a></a><span></span></p><div></div>')
-     end
-   end
-   describe 'self terminating tags'
+   describe('nesting tags', function(){
+     it('correctly display', function(){
+       expect(littleBuilder.build().p().a().end().span().end().end().div().end().toString()).toEqual('<p><a></a><span></span></p><div></div>')
+     });
+   });
+   
+   describe('self terminating tags', function(){
      
-     before_each
+     beforeEach(function() {
        builder = littleBuilder.build()
-     end
+     });
      
-     it 'builds a <area/> tag'
-       builder.area().toString().should.equal('<area>')
-     end
+     it('builds a <area/> tag', function(){
+       expect(builder.area().toString()).toEqual('<area>')
+     });
    
-     it 'builds a <br/> tag'
-       builder.br().toString().should.equal('<br>')
-     end
+     it('builds a <br/> tag', function(){
+       expect(builder.br().toString()).toEqual('<br>')
+     });
      
-     it 'builds a <col> tag'
-       builder.col().toString().should.equal('<col>')
-     end
+     it('builds a <col> tag', function(){
+       expect(builder.col().toString()).toEqual('<col>')
+     });
      
-     it 'builds a <embed> tag'
-       builder.embed().toString().should.equal('<embed>')
-     end
+     it('builds a <embed> tag', function(){
+       expect(builder.embed().toString()).toEqual('<embed>')
+     });
    
-     it 'builds a <hr/> tag'
-       builder.hr().toString().should.equal('<hr>')
-     end
+     it('builds a <hr/> tag', function(){
+       expect(builder.hr().toString()).toEqual('<hr>')
+     });
    
-     it 'builds a <input/> tag'
-       builder.input().toString().should.equal('<input>')
-     end
+     it('builds a <input/> tag', function(){
+       expect(builder.input().toString()).toEqual('<input>')
+     });
    
-     it 'builds a <img/> tag'
-       builder.img().toString().should.equal('<img>')
-     end
+     it('builds a <img/> tag', function(){
+       expect(builder.img().toString()).toEqual('<img>')
+     });
    
-     it 'builds a <link/> tag'
-       builder.link().toString().should.equal('<link>')
-     end
+     it('builds a <link/> tag', function(){
+       expect(builder.link().toString()).toEqual('<link>')
+     });
    
-     it 'builds a <meta/> tag'
-       builder.meta().toString().should.equal('<meta>')
-     end
+     it('builds a <meta/> tag', function(){
+       expect(builder.meta().toString()).toEqual('<meta>')
+     });
    
-     it 'builds a <param/> tag'
-       builder.param().toString().should.equal('<param>')
-     end
+     it('builds a <param/> tag', function(){
+       expect(builder.param().toString()).toEqual('<param>')
+     });
      
-     it 'builds a <source> tag'
-       builder.source().toString().should.equal('<source>')
-     end
-   end
-end
+     it('builds a <source> tag', function(){
+       expect(builder.source().toString()).toEqual('<source>')
+     });
+   });
+})
