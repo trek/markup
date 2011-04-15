@@ -1,15 +1,13 @@
-describe('littleBuilder', function(){
+describe('markup', function(){
+  var built, builder;
+  
   describe('.build()', function(){
-    it('returns a new builder context', function(){
-      // littleBuilder.build().should.be_an_instance_of(littleBuilder.Context)
-    });
-    
     it('can be chained', function(){
-      expect(littleBuilder.build().div().end().toString()).toEqual('<div></div>')
+      expect(markup().div().end().toString()).toEqual('<div></div>')
     });
     
     it('can be used unchained', function(){
-      built = littleBuilder.build()
+      built = markup()
       built.div()
       built.end()
       expect(built.toString()).toEqual('<div></div>');
@@ -17,7 +15,7 @@ describe('littleBuilder', function(){
     
     describe('tags', function(){
       beforeEach(function() {
-        builder = littleBuilder.build()
+        builder = markup()
       });
       
       it('writes text nodes', function(){
@@ -29,7 +27,7 @@ describe('littleBuilder', function(){
   
   describe('setting attributes', function(){
      beforeEach(function() {
-       builder = littleBuilder.build()
+       builder = markup()
      });
      
      it('works with ({id: "foo", "class":"a cool awesome"})', function(){
@@ -39,7 +37,7 @@ describe('littleBuilder', function(){
    
    describe('setting text immediately', function(){
      beforeEach(function() {
-       builder = littleBuilder.build()
+       builder = markup()
      });
      
      it('works with ({}, "some text")', function(){
@@ -49,7 +47,7 @@ describe('littleBuilder', function(){
    
    describe('tags', function(){
      beforeEach(function() {
-       builder = littleBuilder.build()
+       builder = markup()
      });
      
      it('builds a <a> tag', function(){
@@ -225,7 +223,6 @@ describe('littleBuilder', function(){
      });
    
      it('builds a <ins> tag', function(){
-     console.log('<ins>')
        expect(builder.ins().end().toString()).toEqual('<ins></ins>')
      });
    
@@ -420,7 +417,7 @@ describe('littleBuilder', function(){
    
    describe('closing tags', function(){
      beforeEach(function() {
-       builder = littleBuilder.build()
+       builder = markup()
      });
      
      it('closes tags with end', function(){      
@@ -431,14 +428,14 @@ describe('littleBuilder', function(){
    
    describe('nesting tags', function(){
      it('correctly display', function(){
-       expect(littleBuilder.build().p().a().end().span().end().end().div().end().toString()).toEqual('<p><a></a><span></span></p><div></div>')
+       expect(markup().p().a().end().span().end().end().div().end().toString()).toEqual('<p><a></a><span></span></p><div></div>')
      });
    });
    
    describe('self terminating tags', function(){
      
      beforeEach(function() {
-       builder = littleBuilder.build()
+       builder = markup()
      });
      
      it('builds a <area/> tag', function(){
